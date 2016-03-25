@@ -1,0 +1,32 @@
+<phpunit
+	backupGlobals="true"
+	backupStaticAttributes="false"
+	bootstrap="UnitTestsBootstrap.php"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertWarningsToExceptions="true"
+	forceCoversAnnotation="false"
+	processIsolation="false"
+	stopOnError="false"
+	stopOnFailure="false"
+	stopOnIncomplete="false"
+	stopOnSkipped="false"
+	verbose="false"
+>
+	<filter>
+		<whitelist>
+			<directory suffix=".php">../</directory>
+			<exclude>
+				<directory suffix=".php">../Build</directory>
+				<directory suffix=".php">../src</directory>
+				<directory suffix=".php">../vendor</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+
+	<testsuites>
+		<testsuite name="Core tests">
+			<directory>../src/Tests/Unit/</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

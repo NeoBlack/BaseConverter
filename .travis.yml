@@ -1,0 +1,31 @@
+language: php
+
+matrix:
+  fast_finish: true
+  include:
+  - php: 7
+    env: UNIT_TESTS=yes PHP_LINT=yes
+sudo: false
+
+cache:
+  directories:
+  - $HOME/.composer/cache
+
+before_script:
+- phpenv config-rm xdebug.ini
+- if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
+- composer install
+
+script:
+- |
+  if [[ "$UNIT_TESTS" == "yes" ]]; then
+    echo;
+    echo "Running unit tests";
+    ./bin/phpunit -c Build/UnitTests.xml
+  fi
+- |-
+  if [[ "$PHP_LINT" == "yes" ]]; then
+      echo;
+      echo "Running php lint";
+      find . -name \*.php -not -path "./vendor/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
+  fi
