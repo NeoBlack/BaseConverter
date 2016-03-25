@@ -27,5 +27,5 @@ script:
   if [[ "$PHP_LINT" == "yes" ]]; then
       echo;
       echo "Running php lint";
-      find . -name \*.php -not -path "./vendor/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
+      find . -name \*.php -not -path "./vendor/*" | php -d display_errors=stderr -l {} > /dev/null \;
   fi
