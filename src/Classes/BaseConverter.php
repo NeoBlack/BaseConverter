@@ -69,7 +69,7 @@ class BaseConverter
     public static function toBase(int $value, string $base = self::BASE64): string
     {
         $baseLength = strlen($base);
-        $radix = $value  % $baseLength;
+        $radix = $value % $baseLength;
         $result = $base[$radix];
         $tmp = floor($value / $baseLength);
         while ($tmp) {
