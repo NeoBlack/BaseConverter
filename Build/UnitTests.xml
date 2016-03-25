@@ -13,13 +13,12 @@
 	stopOnSkipped="false"
 	verbose="false"
 >
+
 	<filter>
-		<whitelist>
-			<directory suffix=".php">../</directory>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">../src</directory>
 			<exclude>
-				<directory suffix=".php">../Build</directory>
-				<directory suffix=".php">../src</directory>
-				<directory suffix=".php">../vendor</directory>
+				<directory suffix=".php">../src/Tests</directory>
 			</exclude>
 		</whitelist>
 	</filter>
